@@ -21,7 +21,9 @@ resource "azurerm_resource_group" "resource-group-example1" {
 }
 
 resource "azurerm_storage_account" "example" {
- 
+
+#depends_on = [ azurerm_resource_group.example ] --> explicit dependency
+
   name                     = "mystorageaccount-example1"
   resource_group_name      = azurerm_resource_group.resource-group-example1.name
   location                 = azurerm_resource_group.resource-group-example1.location # implicit dependency
@@ -29,6 +31,6 @@ resource "azurerm_storage_account" "example" {
   account_replication_type = "LRS"
 
   tags = {
-    environment = "staging"
+    environment = "dev"
   }
 }
