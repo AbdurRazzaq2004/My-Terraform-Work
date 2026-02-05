@@ -155,8 +155,12 @@ The configuration also includes a commented out example of an **explicit depende
 3. Create a Service Principal and export the environment variables as described above.
 4. Run `terraform init` to initialize the working directory and download the provider.
 5. Run `terraform plan` to preview the resources that will be created.
-6. Run `terraform apply` to create the resources in your Azure subscription.
-7. Run `terraform destroy` when you want to remove all the resources.
+6. To quickly see only the resources that will be created, run:
+   ```bash
+   terraform plan | grep "will be created"
+   ```
+7. Run `terraform apply` to create the resources in your Azure subscription.
+8. Run `terraform destroy` when you want to remove all the resources.
 
 ---
 
