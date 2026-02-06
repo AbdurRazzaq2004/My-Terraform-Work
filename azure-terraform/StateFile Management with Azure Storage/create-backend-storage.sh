@@ -6,9 +6,9 @@
 #          state file in a remote backend (Azure Blob Storage)
 # ==============================================================
 
-RESOURCE_GROUP_NAME=tfstate-day04
-STORAGE_ACCOUNT_NAME=day04$RANDOM
-CONTAINER_NAME=tfstate
+RESOURCE_GROUP_NAME=tfstate-backend
+STORAGE_ACCOUNT_NAME=tfstatebackendstorage
+CONTAINER_NAME=tfstate-backend
 
 # Step 1: Create a Resource Group
 az group create --name $RESOURCE_GROUP_NAME --location eastus

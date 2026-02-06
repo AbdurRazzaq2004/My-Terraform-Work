@@ -128,9 +128,9 @@ Before configuring Terraform, you need to create the Azure resources that will h
 #          state file in a remote backend (Azure Blob Storage)
 # ==============================================================
 
-RESOURCE_GROUP_NAME=tfstate-day04
-STORAGE_ACCOUNT_NAME=day04$RANDOM
-CONTAINER_NAME=tfstate
+RESOURCE_GROUP_NAME=tfstate-backend
+STORAGE_ACCOUNT_NAME=tfstatebackendstorage
+CONTAINER_NAME=tfstate-backend
 
 # Step 1: Create a Resource Group
 az group create --name $RESOURCE_GROUP_NAME --location eastus
@@ -146,11 +146,11 @@ az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOU
 
 | Step | Command                      | Purpose                                                                 |
 |:-----|:-----------------------------|:------------------------------------------------------------------------|
-| 1    | `az group create`            | Creates a Resource Group called `tfstate-day04` in the `eastus` region  |
+| 1    | `az group create`            | Creates a Resource Group called `tfstate-backend` in the `eastus` region |
 | 2    | `az storage account create`  | Creates a Storage Account with LRS replication and blob encryption      |
-| 3    | `az storage container create`| Creates a Blob Container called `tfstate` inside the Storage Account    |
+| 3    | `az storage container create`| Creates a Blob Container called `tfstate-backend` inside the Storage Account |
 
-> **Note:** The `$RANDOM` in the storage account name generates a random number each time. After running the script, note down the actual storage account name because you will need it in the `main.tf` backend configuration.
+> **Note:** The storage account name must be globally unique across all of Azure, contain only lowercase letters and numbers, and be between 3 and 24 characters long.
 
 ### Step 2: Run the Script
 
@@ -159,7 +159,7 @@ chmod +x create-backend-storage.sh
 ./create-backend-storage.sh
 ```
 
-After the script runs, check the output for the storage account name that was created (for example: `day0417691`).
+After the script runs, verify the resources were created successfully.
 
 ### Step 3: Configure the Remote Backend in Terraform
 
@@ -176,10 +176,10 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "tfstate-day04"
-    storage_account_name = "day0417691"            # Replace with your actual storage account name
-    container_name       = "tfstate"
-    key                  = "dev.terraform.tfstate"  # Name of the state file blob
+    resource_group_name  = "tfstate-backend"
+    storage_account_name = "tfstatebackendstorage"              # Replace with your actual storage account name
+    container_name       = "tfstate-backend"
+    key                  = "dev.terraform.tfstate"   # Name of the state file blob
   }
   required_version = ">=1.9.0"
 }
@@ -198,9 +198,9 @@ resource "azurerm_resource_group" "example" {
 
 | Property               | Value                    | Description                                                    |
 |:-----------------------|:-------------------------|:---------------------------------------------------------------|
-| resource_group_name    | tfstate-day04            | The Resource Group where the Storage Account lives             |
-| storage_account_name   | day0417691               | The Storage Account name (from the script output)              |
-| container_name         | tfstate                  | The Blob Container that stores the state file                  |
+| resource_group_name    | tfstate-backend          | The Resource Group where the Storage Account lives             |
+| storage_account_name   | tfstatebackendstorage    | The Storage Account name (from the script output)              |
+| container_name         | tfstate-backend          | The Blob Container that stores the state file                  |
 | key                    | dev.terraform.tfstate    | The name of the blob (file) inside the container               |
 
 > **Tip:** The `key` value lets you have multiple state files in the same container. For example, you can use `dev.terraform.tfstate` for development and `prod.terraform.tfstate` for production.
@@ -255,6 +255,159 @@ StateFile Management with Azure Storage/
 | `terraform plan`       | Preview the changes Terraform will make                        |
 | `terraform apply`      | Apply the changes and create the resources                     |
 | `terraform destroy`    | Destroy all resources managed by Terraform                     |
+
+---
+
+## Common Issues and How to Fix Them
+
+### Issue 1: AuthorizationFailed when creating a Resource Group
+
+**Error:**
+
+```
+The client 'user@example.com' does not have authorization to perform action
+'Microsoft.Resources/subscriptions/resourcegroups/write' over scope
+'/subscriptions/<subscription_id>/resourcegroups/tfstate-backend'
+```
+
+**Why this happens:**
+
+Your Azure account does not have permission to create new Resource Groups. This is common in lab environments (like Pluralsight, A Cloud Guru, etc.) where your access is restricted to a pre-created resource group only.
+
+**How to fix it:**
+
+1. List the existing resource groups in your subscription:
+   ```bash
+   az group list --output table
+   ```
+2. Use the pre-created resource group name in both the `create-backend-storage.sh` script and the `main.tf` backend configuration instead of creating a new one.
+
+---
+
+### Issue 2: StorageAccountAlreadyTaken
+
+**Error:**
+
+```
+The storage account named tfstatebackendstorage is already taken.
+```
+
+**Why this happens:**
+
+Azure Storage Account names must be **globally unique** across all of Azure, not just within your subscription. If someone else in the world has already used that name, you cannot use it again.
+
+**How to fix it:**
+
+Choose a more unique storage account name. You can append random characters, your name, or a date to make it unique:
+
+```bash
+STORAGE_ACCOUNT_NAME=tfbackendrazzaq2026
+```
+
+> **Remember:** Storage account names must be all lowercase, between 3 and 24 characters, and contain only letters and numbers.
+
+---
+
+### Issue 3: 403 Forbidden when running `terraform init`
+
+**Error:**
+
+```
+Error: retrieving Storage Account: unexpected status 403 (403 Forbidden)
+The client does not have authorization to perform action
+'Microsoft.Storage/storageAccounts/read'
+```
+
+**Why this happens:**
+
+This error occurs when one or more of the following is true:
+
+1. The storage account does not exist yet (you forgot to run `create-backend-storage.sh` before `terraform init`).
+2. The resource group name, storage account name, or container name in `main.tf` does not match the actual Azure resources.
+3. Your Azure session has expired.
+
+**How to fix it:**
+
+1. Make sure you have created the backend storage resources **before** running `terraform init`.
+2. Verify all values in the `backend "azurerm"` block match the actual resources in Azure:
+   ```bash
+   az group list --output table
+   az storage account list --output table
+   az storage container list --account-name <your_storage_account_name> --output table
+   ```
+3. If your session expired, log in again:
+   ```bash
+   az login
+   ```
+
+---
+
+### Issue 4: `subscription_id` is a required provider property
+
+**Error:**
+
+```
+Error: `subscription_id` is a required provider property when performing a plan/apply operation
+```
+
+**Why this happens:**
+
+Starting from AzureRM provider version 4.x, the `subscription_id` is mandatory in the provider block.
+
+**How to fix it:**
+
+Add the `subscription_id` to your provider block:
+
+```hcl
+provider "azurerm" {
+  subscription_id = "<your_subscription_id>"
+  features {}
+}
+```
+
+Or the better approach is to set it as an environment variable:
+
+```bash
+export ARM_SUBSCRIPTION_ID="<your_subscription_id>"
+```
+
+---
+
+### Issue 5: Terraform does not have permission to register Resource Providers
+
+**Error:**
+
+```
+Error: Terraform does not have the necessary permissions to register Resource Providers.
+```
+
+**Why this happens:**
+
+By default, Terraform tries to register all Azure Resource Providers it supports. In restricted environments (like lab accounts), your user may not have permission to do this.
+
+**How to fix it:**
+
+Add `resource_provider_registrations = "none"` to your provider block:
+
+```hcl
+provider "azurerm" {
+  subscription_id                 = "<your_subscription_id>"
+  resource_provider_registrations = "none"
+  features {}
+}
+```
+
+---
+
+### Quick Troubleshooting Checklist
+
+| Check | Command |
+|:------|:--------|
+| Verify you are logged in | `az account show` |
+| List available resource groups | `az group list --output table` |
+| List storage accounts | `az storage account list --output table` |
+| List containers in a storage account | `az storage container list --account-name <name> --output table` |
+| Check your subscription ID | `az account show --query id --output tsv` |
 
 ---
 
