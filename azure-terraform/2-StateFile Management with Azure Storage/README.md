@@ -419,8 +419,26 @@ provider "azurerm" {
 
 ---
 
-## References
+## 📚 References
 
-1. [Terraform Backend Configuration for Azure](https://developer.hashicorp.com/terraform/language/backend/azurerm)
-2. [AzureRM Provider Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest)
-3. [Store Terraform State in Azure Storage](https://learn.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage)
+### HashiCorp Terraform Documentation
+- [Terraform State Overview](https://developer.hashicorp.com/terraform/language/state)
+- [Terraform Backend Configuration](https://developer.hashicorp.com/terraform/language/backend)
+- [AzureRM Backend Configuration](https://developer.hashicorp.com/terraform/language/backend/azurerm)
+- [Terraform State Locking](https://developer.hashicorp.com/terraform/language/state/locking)
+- [Terraform Remote State](https://developer.hashicorp.com/terraform/language/state/remote)
+- [AzureRM Provider Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
+
+### Microsoft Azure Documentation
+- [Store Terraform State in Azure Storage](https://learn.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage)
+- [Azure Blob Storage Overview](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview)
+- [Azure Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+- [Azure CLI Storage Commands](https://learn.microsoft.com/en-us/cli/azure/storage)
+
+### Terraform AzureRM Resource Reference
+- [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group)
+- [azurerm_storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account)
+- [azurerm_storage_container](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_container)
+
+### Course Reference
+- [Day 04 Terraform Course](https://github.com/piyushsachdeva/Terraform-Full-Course-Azure/tree/main/lessons/day04)

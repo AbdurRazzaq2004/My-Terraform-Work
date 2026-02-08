@@ -323,10 +323,26 @@ terraform destroy
 
 ---
 
-## 📚 Reference
+## 📚 References
 
-- [Terraform Meta Arguments Documentation](https://developer.hashicorp.com/terraform/language/meta-arguments)
-- [Terraform for_each Documentation](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each)
-- [Terraform count Documentation](https://developer.hashicorp.com/terraform/language/meta-arguments/count)
-- [Terraform lifecycle Documentation](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
+### HashiCorp Terraform Documentation
+- [Terraform Meta Arguments Overview](https://developer.hashicorp.com/terraform/language/meta-arguments)
+- [Terraform for_each](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each)
+- [Terraform count](https://developer.hashicorp.com/terraform/language/meta-arguments/count)
+- [Terraform depends_on](https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on)
+- [Terraform lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
+- [Terraform provider Meta Argument](https://developer.hashicorp.com/terraform/language/meta-arguments/resource-provider)
+- [Terraform for Expressions](https://developer.hashicorp.com/terraform/language/expressions/for)
+- [AzureRM Provider Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
+
+### Microsoft Azure Documentation
+- [Azure Resource Groups Overview](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups)
+- [Azure Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+- [Azure Storage Redundancy](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+
+### Terraform AzureRM Resource Reference
+- [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group)
+- [azurerm_storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account)
+
+### Course Reference
 - [Day 08 Terraform Course](https://github.com/piyushsachdeva/Terraform-Full-Course-Azure/tree/main/lessons/day08)

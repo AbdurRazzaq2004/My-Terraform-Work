@@ -181,8 +181,25 @@ Creating-RG-and-StorageAccount/
 
 ---
 
-## References
+## 📚 References
 
-1. [AzureRM Provider Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest)
-2. [Azure Service Principal with Azure CLI](https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1)
-3. [Terraform AzureRM Authentication Guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#authenticating-to-azure)
+### HashiCorp Terraform Documentation
+- [Terraform Overview](https://developer.hashicorp.com/terraform/intro)
+- [Terraform Configuration Language](https://developer.hashicorp.com/terraform/language)
+- [Terraform Providers](https://developer.hashicorp.com/terraform/language/providers)
+- [Terraform Resources](https://developer.hashicorp.com/terraform/language/resources)
+- [AzureRM Provider Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
+- [AzureRM Authentication Guide](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#authenticating-to-azure)
+
+### Microsoft Azure Documentation
+- [Azure Resource Groups Overview](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups)
+- [Azure Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+- [Create a Service Principal with Azure CLI](https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1)
+- [Install Terraform on Azure](https://learn.microsoft.com/en-us/azure/developer/terraform/quickstart-configure)
+
+### Terraform AzureRM Resource Reference
+- [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group)
+- [azurerm_storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account)
+
+### Course Reference
+- [Day 03 Terraform Course](https://github.com/piyushsachdeva/Terraform-Full-Course-Azure/tree/main/lessons/day03)

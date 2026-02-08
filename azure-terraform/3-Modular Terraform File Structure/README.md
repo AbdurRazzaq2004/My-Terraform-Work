@@ -214,9 +214,25 @@ Outputs display useful information after Terraform creates the resources. For ex
 
 ---
 
-## References
+## 📚 References
 
-1. [Terraform Input Variables](https://developer.hashicorp.com/terraform/language/values/variables)
-2. [Terraform Local Values](https://developer.hashicorp.com/terraform/language/values/locals)
-3. [Terraform Output Values](https://developer.hashicorp.com/terraform/language/values/outputs)
-4. [AzureRM Provider Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest)
+### HashiCorp Terraform Documentation
+- [Terraform Configuration Files](https://developer.hashicorp.com/terraform/language/files)
+- [Terraform Input Variables](https://developer.hashicorp.com/terraform/language/values/variables)
+- [Terraform Local Values](https://developer.hashicorp.com/terraform/language/values/locals)
+- [Terraform Output Values](https://developer.hashicorp.com/terraform/language/values/outputs)
+- [Terraform Override Files](https://developer.hashicorp.com/terraform/language/files/override)
+- [Terraform Variable Definitions (.tfvars)](https://developer.hashicorp.com/terraform/language/values/variables#variable-definitions-tfvars-files)
+- [AzureRM Provider Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
+
+### Microsoft Azure Documentation
+- [Azure Resource Groups Overview](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups)
+- [Azure Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+- [Terraform on Azure Best Practices](https://learn.microsoft.com/en-us/azure/developer/terraform/best-practices-terraform-azure)
+
+### Terraform AzureRM Resource Reference
+- [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group)
+- [azurerm_storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account)
+
+### Course Reference
+- [Day 06 Terraform Course](https://github.com/piyushsachdeva/Terraform-Full-Course-Azure/tree/main/lessons/day06)

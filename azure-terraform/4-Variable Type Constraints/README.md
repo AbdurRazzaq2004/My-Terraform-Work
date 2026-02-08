@@ -280,9 +280,29 @@ Variable Type Constraints/
 
 ---
 
-## References
+## 📚 References
 
-1. [Terraform Variable Types](https://developer.hashicorp.com/terraform/language/expressions/types)
-2. [Terraform Input Variables](https://developer.hashicorp.com/terraform/language/values/variables)
-3. [Terraform Type Constraints](https://developer.hashicorp.com/terraform/language/expressions/type-constraints)
-4. [AzureRM Provider Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest)
+### HashiCorp Terraform Documentation
+- [Terraform Variable Types](https://developer.hashicorp.com/terraform/language/expressions/types)
+- [Terraform Input Variables](https://developer.hashicorp.com/terraform/language/values/variables)
+- [Terraform Type Constraints](https://developer.hashicorp.com/terraform/language/expressions/type-constraints)
+- [Terraform Collection Types (list, map, set)](https://developer.hashicorp.com/terraform/language/expressions/types#collection-types)
+- [Terraform Structural Types (object, tuple)](https://developer.hashicorp.com/terraform/language/expressions/types#structural-types)
+- [Terraform Variable Validation](https://developer.hashicorp.com/terraform/language/values/variables#custom-validation-rules)
+- [AzureRM Provider Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
+
+### Microsoft Azure Documentation
+- [Azure Virtual Machines Overview](https://learn.microsoft.com/en-us/azure/virtual-machines/overview)
+- [Azure Virtual Network Overview](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview)
+- [Azure Storage Account Overview](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+- [Azure VM Sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes)
+
+### Terraform AzureRM Resource Reference
+- [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group)
+- [azurerm_virtual_network](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network)
+- [azurerm_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet)
+- [azurerm_network_interface](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface)
+- [azurerm_linux_virtual_machine](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine)
+
+### Course Reference
+- [Day 07 Terraform Course](https://github.com/piyushsachdeva/Terraform-Full-Course-Azure/tree/main/lessons/day07)
