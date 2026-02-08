@@ -233,6 +233,3 @@ Outputs display useful information after Terraform creates the resources. For ex
 ### Terraform AzureRM Resource Reference
 - [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group)
 - [azurerm_storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account)
-
-### Course Reference
-- [Day 06 Terraform Course](https://github.com/piyushsachdeva/Terraform-Full-Course-Azure/tree/main/lessons/day06)

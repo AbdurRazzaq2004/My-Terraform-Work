@@ -200,6 +200,3 @@ Creating-RG-and-StorageAccount/
 ### Terraform AzureRM Resource Reference
 - [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group)
 - [azurerm_storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account)
-
-### Course Reference
-- [Day 03 Terraform Course](https://github.com/piyushsachdeva/Terraform-Full-Course-Azure/tree/main/lessons/day03)
