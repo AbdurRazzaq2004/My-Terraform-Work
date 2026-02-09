@@ -1,4 +1,12 @@
 # ========================================
+# Resource Group (pre-existing sandbox RG)
+# ========================================
+variable "resource_group_name" {
+  type        = string
+  description = "Name of the pre-existing resource group (sandbox lab restriction)"
+}
+
+# ========================================
 # Environment
 # ========================================
 variable "environment" {

@@ -4,12 +4,10 @@
 resource "random_pet" "lb_hostname" {}
 
 # ========================================
-# Resource Group
+# Resource Group (use pre-existing sandbox RG)
 # ========================================
-resource "azurerm_resource_group" "rg" {
-  name     = "${var.prefix}-rg"
-  location = var.location
-  tags     = local.common_tags
+data "azurerm_resource_group" "rg" {
+  name = var.resource_group_name
 }
 
 # ========================================
@@ -18,8 +16,8 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_virtual_network" "vnet" {
   name                = "${var.prefix}-vnet"
   address_space       = [var.vnet_address_space]
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
   tags                = local.common_tags
 }
 
@@ -28,7 +26,7 @@ resource "azurerm_virtual_network" "vnet" {
 # ========================================
 resource "azurerm_subnet" "app_subnet" {
   name                 = "${var.prefix}-app-subnet"
-  resource_group_name  = azurerm_resource_group.rg.name
+  resource_group_name  = data.azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = [var.app_subnet_prefix]
 }
@@ -38,7 +36,7 @@ resource "azurerm_subnet" "app_subnet" {
 # ========================================
 resource "azurerm_subnet" "mgmt_subnet" {
   name                 = "${var.prefix}-mgmt-subnet"
-  resource_group_name  = azurerm_resource_group.rg.name
+  resource_group_name  = data.azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = [var.mgmt_subnet_prefix]
 }
@@ -48,8 +46,8 @@ resource "azurerm_subnet" "mgmt_subnet" {
 # ========================================
 resource "azurerm_network_security_group" "nsg" {
   name                = "${var.prefix}-nsg"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
 
   # Dynamic block generates security rules from local.nsg_rules map
   dynamic "security_rule" {

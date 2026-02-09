@@ -3,12 +3,12 @@
 # ========================================
 resource "azurerm_public_ip" "lb_pip" {
   name                = "${var.prefix}-lb-pip"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
   allocation_method   = "Static"
   sku                 = "Standard"
   zones               = ["1", "2", "3"]
-  domain_name_label   = "${azurerm_resource_group.rg.name}-${random_pet.lb_hostname.id}"
+  domain_name_label   = "${data.azurerm_resource_group.rg.name}-${random_pet.lb_hostname.id}"
   tags                = local.common_tags
 }
 
@@ -17,8 +17,8 @@ resource "azurerm_public_ip" "lb_pip" {
 # ========================================
 resource "azurerm_lb" "lb" {
   name                = "${var.prefix}-lb"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
   sku                 = "Standard"
 
   frontend_ip_configuration {
@@ -67,7 +67,7 @@ resource "azurerm_lb_rule" "http_rule" {
 # ========================================
 resource "azurerm_lb_nat_rule" "ssh" {
   name                           = "ssh-nat-rule"
-  resource_group_name            = azurerm_resource_group.rg.name
+  resource_group_name            = data.azurerm_resource_group.rg.name
   loadbalancer_id                = azurerm_lb.lb.id
   protocol                       = "Tcp"
   frontend_port_start            = 50000

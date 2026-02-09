@@ -1,5 +1,46 @@
 # Mini Project 1: Scalable Web App with VMSS and Load Balancer
 
+## ⚠️ Playground Limitations
+
+This project was built using a **Cloud Playground (sandbox)** with **limited privileges**. The sandbox does **not** allow creating Resource Groups, registering Resource Providers, or creating Service Principals. Because of these restrictions, certain workarounds were applied across the Terraform files.
+
+### What Was Changed and Why
+
+| File | What Changed | Why |
+|---|---|---|
+| `provider.tf` | `subscription_id` is explicitly set | The sandbox requires specifying the subscription ID manually |
+| `provider.tf` | `resource_provider_registrations = "none"` | The sandbox does not allow registering Azure Resource Providers |
+| `vnet.tf` | Uses `data "azurerm_resource_group"` (data source) instead of `resource "azurerm_resource_group"` | The sandbox does not allow creating new Resource Groups, so we reference the pre existing one |
+| `lb.tf` | All references use `data.azurerm_resource_group.rg` | Same reason — referencing the pre existing Resource Group |
+| `vmss.tf` | All references use `data.azurerm_resource_group.rg` | Same reason — referencing the pre existing Resource Group |
+| `autoscale.tf` | All references use `data.azurerm_resource_group.rg` | Same reason — referencing the pre existing Resource Group |
+| `output.tf` | Output references `data.azurerm_resource_group.rg.name` | Same reason — reading from data source instead of resource |
+| `variables.tf` | Added `resource_group_name` variable | Needed to pass the pre existing Resource Group name |
+| `terraform.tfvars` | Added `resource_group_name` value | Supplies the sandbox Resource Group name |
+
+### If You Have a Personal Azure Account
+
+If you are using a **personal Azure account** with full privileges, you can undo these workarounds:
+
+1. **In `provider.tf`**: Remove `subscription_id` (Terraform will use your default) and remove `resource_provider_registrations = "none"` (Terraform will auto register providers)
+
+2. **In `vnet.tf`**: Replace the data source with a resource block:
+   ```hcl
+   resource "azurerm_resource_group" "rg" {
+     name     = "${var.prefix}-rg"
+     location = var.location
+     tags     = local.common_tags
+   }
+   ```
+
+3. **In all files** (`vnet.tf`, `lb.tf`, `vmss.tf`, `autoscale.tf`, `output.tf`): Change every reference from:
+   - `data.azurerm_resource_group.rg.name` → `azurerm_resource_group.rg.name`
+   - `data.azurerm_resource_group.rg.location` → `azurerm_resource_group.rg.location`
+
+4. **In `variables.tf` and `terraform.tfvars`**: Remove the `resource_group_name` variable and its value (Terraform will create the RG for you)
+
+---
+
 ## 📌 Overview
 
 This mini project brings together multiple Terraform concepts learned throughout the course into a single, real world deployment. It provisions a **scalable web application** on Azure using a **Virtual Machine Scale Set (VMSS)** behind an **Azure Load Balancer**, with **autoscaling** based on CPU utilization.
@@ -10,48 +51,7 @@ Every VM instance runs **Apache with PHP**, serving a metadata based status page
 
 ## 🏗️ Architecture
 
-```
-                    Internet
-                       │
-                       ▼
-              ┌─────────────────┐
-              │   Public IP      │
-              │ (Standard SKU)   │
-              └────────┬────────┘
-                       │
-              ┌────────▼────────┐
-              │  Load Balancer   │
-              │  (Standard SKU)  │
-              │                  │
-              │  ● HTTP Rule     │
-              │    (80 → 80)     │
-              │  ● Health Probe  │
-              │    (HTTP / 80)   │
-              │  ● NAT Rule      │
-              │    (50000+ → 22) │
-              └────────┬────────┘
-                       │
-          ┌────────────┼────────────┐
-          │            │            │
-     ┌────▼───┐  ┌────▼───┐  ┌────▼───┐
-     │  VM 1  │  │  VM 2  │  │  VM 3  │
-     │ Apache │  │ Apache │  │ Apache │
-     │  + PHP │  │  + PHP │  │  + PHP │
-     └────┬───┘  └────┬───┘  └────┬───┘
-          │            │            │
-    ┌─────▼────────────▼────────────▼─────┐
-    │         App Subnet (10.0.0.0/20)     │
-    ├──────────────────────────────────────┤
-    │         VNET (10.0.0.0/16)           │
-    │                                      │
-    │   Mgmt Subnet (10.0.16.0/20)        │
-    └──────────────┬───────────────────────┘
-                   │
-           ┌───────▼───────┐
-           │  NAT Gateway   │ → Outbound Internet
-           │  (Public IP)   │
-           └───────────────┘
-```
+![Architecture Diagram](images/WhatsApp%20Image%202026-02-09%20at%206.16.08%20PM.jpeg)
 
 ---
 

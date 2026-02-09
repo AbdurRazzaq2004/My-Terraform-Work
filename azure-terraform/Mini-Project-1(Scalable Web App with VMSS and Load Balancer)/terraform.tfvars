@@ -1,4 +1,9 @@
 # ========================================
+# Resource Group (pre-existing sandbox RG)
+# ========================================
+resource_group_name = "1-e067cbe1-playground-sandbox"
+
+# ========================================
 # Environment  dev
 # ========================================
 environment = "dev"

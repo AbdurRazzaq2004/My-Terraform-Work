@@ -3,8 +3,8 @@
 # ========================================
 resource "azurerm_public_ip" "natgw_pip" {
   name                = "${var.prefix}-natgw-pip"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
   allocation_method   = "Static"
   sku                 = "Standard"
   zones               = ["1"]
@@ -16,8 +16,8 @@ resource "azurerm_public_ip" "natgw_pip" {
 # ========================================
 resource "azurerm_nat_gateway" "natgw" {
   name                    = "${var.prefix}-natgw"
-  location                = azurerm_resource_group.rg.location
-  resource_group_name     = azurerm_resource_group.rg.name
+  location                = data.azurerm_resource_group.rg.location
+  resource_group_name     = data.azurerm_resource_group.rg.name
   sku_name                = "Standard"
   idle_timeout_in_minutes = 10
   zones                   = ["1"]
@@ -45,8 +45,8 @@ resource "azurerm_subnet_nat_gateway_association" "natgw_subnet_assoc" {
 # ========================================
 resource "azurerm_orchestrated_virtual_machine_scale_set" "vmss" {
   name                        = "${var.prefix}-vmss"
-  resource_group_name         = azurerm_resource_group.rg.name
-  location                    = azurerm_resource_group.rg.location
+  resource_group_name         = data.azurerm_resource_group.rg.name
+  location                    = data.azurerm_resource_group.rg.location
   sku_name                    = local.vm_size
   instances                   = var.instance_count
   platform_fault_domain_count = 1     # Required for zonal deployments
