@@ -13,7 +13,7 @@ locals {
 # VM Size Lookup
 # ========================================
 locals {
-  vm_size = lookup(var.vm_sizes, var.environment, "Standard_B1s")
+  vm_size = lookup(var.vm_sizes, var.environment, "Standard_D2s_v3")
 }
 
 # ========================================

@@ -71,9 +71,9 @@ variable "vm_sizes" {
   type        = map(string)
   description = "VM size mapping per environment"
   default = {
-    dev     = "Standard_B1s"
-    staging = "Standard_B2s"
-    prod    = "Standard_B2ms"
+    dev     = "Standard_D2s_v3"
+    staging = "Standard_D2s_v3"
+    prod    = "Standard_D2s_v3"
   }
 }
 

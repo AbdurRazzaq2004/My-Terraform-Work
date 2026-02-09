@@ -8,7 +8,7 @@ resource "azurerm_public_ip" "lb_pip" {
   allocation_method   = "Static"
   sku                 = "Standard"
   zones               = ["1", "2", "3"]
-  domain_name_label   = "${data.azurerm_resource_group.rg.name}-${random_pet.lb_hostname.id}"
+  domain_name_label   = "${var.prefix}-${random_pet.lb_hostname.id}"
   tags                = local.common_tags
 }
 
