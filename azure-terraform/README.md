@@ -18,7 +18,7 @@
 <br/>
 
 <img src="https://img.shields.io/badge/Lessons-9-blue?style=flat-square" alt="Lessons"/>
-<img src="https://img.shields.io/badge/Mini_Projects-1-orange?style=flat-square" alt="Projects"/>
+<img src="https://img.shields.io/badge/Mini_Projects-2-orange?style=flat-square" alt="Projects"/>
 <img src="https://img.shields.io/badge/Terraform-%3E%3D1.9.0-purple?style=flat-square&logo=terraform" alt="Terraform"/>
 <img src="https://img.shields.io/badge/AzureRM-~%3E4.8.0-0078D4?style=flat-square&logo=microsoftazure" alt="AzureRM"/>
 
@@ -57,6 +57,7 @@ This repository documents my **hands on journey** learning Terraform with Micros
 | # | Project | Description | Resources |
 |:---:|:---|:---|:---:|
 | 1 | [**Scalable Web App with VMSS and Load Balancer**](Mini-Project-1(Scalable%20Web%20App%20with%20VMSS%20and%20Load%20Balancer)/) | Production style deployment with VMSS, Load Balancer, NAT Gateway, autoscaling, and NSG — integrating concepts from all 9 lessons | 18 |
+| 2 | [**VNet Peering and VM Connectivity**](Mini-Project-2(VNet%20Peering%20and%20VM%20Connectivity)/) | Two VNets, two VMs, Azure Bastion, and conditional VNet Peering — test connectivity before and after peering | 16 |
 
 ---
 
@@ -108,6 +109,7 @@ terraform apply
  ┣ 📂 8-Terraform Functions/
  ┣ 📂 9-Terraform Data Sources/
  ┣ 📂 Mini-Project-1(Scalable Web App with VMSS and Load Balancer)/
+ ┣ 📂 Mini-Project-2(VNet Peering and VM Connectivity)/
  ┗ 📄 README.md
 ```
 
