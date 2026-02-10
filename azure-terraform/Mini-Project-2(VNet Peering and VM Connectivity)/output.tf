@@ -58,12 +58,12 @@ output "peering_enabled" {
   value       = var.enable_peering
 }
 
-output "peering_state_vnet1_to_vnet2" {
-  description = "Peering state from VNet 1 to VNet 2"
-  value       = var.enable_peering ? azurerm_virtual_network_peering.vnet1_to_vnet2[0].peering_state : "Not configured"
+output "peering_vnet1_to_vnet2_id" {
+  description = "Peering ID from VNet 1 to VNet 2"
+  value       = var.enable_peering ? azurerm_virtual_network_peering.vnet1_to_vnet2[0].id : "Not configured"
 }
 
-output "peering_state_vnet2_to_vnet1" {
-  description = "Peering state from VNet 2 to VNet 1"
-  value       = var.enable_peering ? azurerm_virtual_network_peering.vnet2_to_vnet1[0].peering_state : "Not configured"
+output "peering_vnet2_to_vnet1_id" {
+  description = "Peering ID from VNet 2 to VNet 1"
+  value       = var.enable_peering ? azurerm_virtual_network_peering.vnet2_to_vnet1[0].id : "Not configured"
 }

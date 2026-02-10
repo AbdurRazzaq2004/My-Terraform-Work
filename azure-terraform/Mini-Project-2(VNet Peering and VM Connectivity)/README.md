@@ -19,6 +19,7 @@
 <img src="https://img.shields.io/badge/Terraform-%3E%3D1.9.0-purple?style=flat-square&logo=terraform" alt="Terraform Version"/>
 <img src="https://img.shields.io/badge/AzureRM-~%3E4.8.0-0078D4?style=flat-square&logo=microsoftazure" alt="AzureRM"/>
 <img src="https://img.shields.io/badge/Bastion-Enabled-brightgreen?style=flat-square&logo=microsoftazure" alt="Bastion"/>
+<img src="https://img.shields.io/badge/Status-Deployed%20%E2%9C%85-brightgreen?style=flat-square" alt="Status"/>
 
 </div>
 
@@ -290,7 +291,42 @@ terraform destroy
 
 ## 📸 Screenshots
 
-> Screenshots will be added after completing the hands on demo
+<details open>
+<summary><b>🖼️ Hands On Lab Activity</b></summary>
+
+<br/>
+
+<div align="center">
+
+<img src="images/1.png" alt="Screenshot 1" width="90%"/>
+
+<br/><br/>
+
+<img src="images/2.png" alt="Screenshot 2" width="90%"/>
+
+<br/><br/>
+
+<img src="images/3.png" alt="Screenshot 3" width="90%"/>
+
+<br/><br/>
+
+<img src="images/4.png" alt="Screenshot 4" width="90%"/>
+
+<br/><br/>
+
+<img src="images/5.png" alt="Screenshot 5" width="90%"/>
+
+<br/><br/>
+
+<img src="images/6.png" alt="Screenshot 6" width="90%"/>
+
+<br/><br/>
+
+<img src="images/7.png" alt="Screenshot 7" width="90%"/>
+
+</div>
+
+</details>
 
 ---
 
