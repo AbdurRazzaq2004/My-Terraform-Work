@@ -1,18 +1,12 @@
-# ========================================
 # Random Pet Name (for unique DNS label)
-# ========================================
 resource "random_pet" "lb_hostname" {}
 
-# ========================================
 # Resource Group (use pre-existing sandbox RG)
-# ========================================
 data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
 }
 
-# ========================================
 # Virtual Network
-# ========================================
 resource "azurerm_virtual_network" "vnet" {
   name                = "${var.prefix}-vnet"
   address_space       = [var.vnet_address_space]
@@ -21,9 +15,7 @@ resource "azurerm_virtual_network" "vnet" {
   tags                = local.common_tags
 }
 
-# ========================================
 # Application Subnet (for VMSS)
-# ========================================
 resource "azurerm_subnet" "app_subnet" {
   name                 = "${var.prefix}-app-subnet"
   resource_group_name  = data.azurerm_resource_group.rg.name
@@ -31,9 +23,7 @@ resource "azurerm_subnet" "app_subnet" {
   address_prefixes     = [var.app_subnet_prefix]
 }
 
-# ========================================
 # Management Subnet (for future use)
-# ========================================
 resource "azurerm_subnet" "mgmt_subnet" {
   name                 = "${var.prefix}-mgmt-subnet"
   resource_group_name  = data.azurerm_resource_group.rg.name
@@ -41,9 +31,7 @@ resource "azurerm_subnet" "mgmt_subnet" {
   address_prefixes     = [var.mgmt_subnet_prefix]
 }
 
-# ========================================
 # Network Security Group (Dynamic Block)
-# ========================================
 resource "azurerm_network_security_group" "nsg" {
   name                = "${var.prefix}-nsg"
   location            = data.azurerm_resource_group.rg.location
@@ -69,9 +57,7 @@ resource "azurerm_network_security_group" "nsg" {
   tags = local.common_tags
 }
 
-# ========================================
 # NSG Association with App Subnet
-# ========================================
 resource "azurerm_subnet_network_security_group_association" "nsg_assoc" {
   subnet_id                 = azurerm_subnet.app_subnet.id
   network_security_group_id = azurerm_network_security_group.nsg.id

@@ -1,14 +1,9 @@
-# ========================================
 # Resource Group (pre-existing sandbox RG)
-# ========================================
 variable "resource_group_name" {
   type        = string
   description = "Name of the pre-existing resource group (sandbox lab restriction)"
 }
 
-# ========================================
-# Environment
-# ========================================
 variable "environment" {
   type        = string
   description = "Environment name (dev, staging, prod)"
@@ -20,9 +15,6 @@ variable "environment" {
   }
 }
 
-# ========================================
-# Region
-# ========================================
 variable "location" {
   type        = string
   description = "Azure region where resources will be created"
@@ -34,18 +26,13 @@ variable "location" {
   }
 }
 
-# ========================================
-# Resource Name Prefix
-# ========================================
 variable "prefix" {
   type        = string
   description = "Prefix for all resource names"
   default     = "miniproject3"
 }
 
-# ========================================
 # App Service Configuration
-# ========================================
 variable "sku_name" {
   type        = string
   description = "The SKU name for the App Service Plan (S1, S2, S3, P1v2, P2v2, P3v2)"
@@ -74,9 +61,7 @@ variable "dotnet_version" {
   default     = "8.0"
 }
 
-# ========================================
 # Source Control Configuration
-# ========================================
 variable "repo_url" {
   type        = string
   description = "GitHub repository URL for source control deployment"
@@ -95,9 +80,7 @@ variable "staging_branch" {
   default     = "appServiceSlot_Working_DO_NOT_MERGE"
 }
 
-# ========================================
 # Slot Swap Configuration
-# ========================================
 variable "swap_slot_to_production" {
   type        = bool
   description = "Whether to swap the staging slot to production (Blue/Green deployment)"

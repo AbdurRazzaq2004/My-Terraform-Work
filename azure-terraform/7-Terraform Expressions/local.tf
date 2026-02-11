@@ -1,6 +1,4 @@
-# ========================================
 # NSG Rules using Local Values
-# ========================================
 # These local values define the Network Security Group rules
 # They will be used with a dynamic block in main.tf
 

@@ -1,15 +1,11 @@
-# ========================================
 # Resource Group
-# ========================================
 resource "azurerm_resource_group" "rg" {
   name     = "${var.environment}-expressions-rg"
   location = "East US"
 }
 
-# ========================================
 # Network Security Group with Dynamic Block
 # and Conditional Expression
-# ========================================
 # Conditional Expression: name changes based on the environment variable
 # Dynamic Block: security rules are generated from local.nsg_rules map
 

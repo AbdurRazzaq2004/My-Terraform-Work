@@ -1,13 +1,9 @@
-# ========================================
 # Reference Pre-existing Resource Group
-# ========================================
 data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
 }
 
-# ========================================
 # VNet 1
-# ========================================
 resource "azurerm_virtual_network" "vnet1" {
   name                = "${var.prefix}-vnet1"
   location            = data.azurerm_resource_group.rg.location
@@ -23,9 +19,7 @@ resource "azurerm_subnet" "sn1" {
   address_prefixes     = [var.subnet1_prefix]
 }
 
-# ========================================
 # VNet 2
-# ========================================
 resource "azurerm_virtual_network" "vnet2" {
   name                = "${var.prefix}-vnet2"
   location            = data.azurerm_resource_group.rg.location
@@ -41,9 +35,7 @@ resource "azurerm_subnet" "sn2" {
   address_prefixes     = [var.subnet2_prefix]
 }
 
-# ========================================
 # Network Security Group (shared)
-# ========================================
 resource "azurerm_network_security_group" "nsg" {
   name                = "${var.prefix}-nsg"
   location            = data.azurerm_resource_group.rg.location
@@ -75,9 +67,7 @@ resource "azurerm_network_security_group" "nsg" {
   }
 }
 
-# ========================================
 # NSG Association
-# ========================================
 resource "azurerm_subnet_network_security_group_association" "sn1_nsg" {
   subnet_id                 = azurerm_subnet.sn1.id
   network_security_group_id = azurerm_network_security_group.nsg.id

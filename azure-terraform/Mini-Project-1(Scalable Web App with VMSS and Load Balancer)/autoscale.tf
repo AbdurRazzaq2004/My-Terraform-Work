@@ -1,6 +1,4 @@
-# ========================================
 # Autoscale Setting for VMSS
-# ========================================
 # Scale OUT when CPU > 80%
 # Scale IN when CPU < 10%
 

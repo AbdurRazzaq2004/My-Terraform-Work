@@ -1,6 +1,4 @@
-# ========================================
 # Common Tags
-# ========================================
 locals {
   common_tags = {
     environment = var.environment
@@ -9,16 +7,12 @@ locals {
   }
 }
 
-# ========================================
 # VM Size Lookup
-# ========================================
 locals {
   vm_size = lookup(var.vm_sizes, var.environment, "Standard_D2s_v3")
 }
 
-# ========================================
 # NSG Rules (for Dynamic Block)
-# ========================================
 locals {
   nsg_rules = {
     "allow-http" = {

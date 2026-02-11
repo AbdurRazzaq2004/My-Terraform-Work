@@ -1,6 +1,4 @@
-# ========================================
 # Outputs
-# ========================================
 
 # Output the resource group name
 output "resource_group_name" {
@@ -14,9 +12,7 @@ output "environment" {
   value       = var.environment
 }
 
-# ========================================
 # Splat Expression Outputs
-# ========================================
 
 # Output all NSG security rule names using splat expression
 output "security_rule_names" {
@@ -36,9 +32,7 @@ output "security_rule_source_ports" {
   value       = azurerm_network_security_group.example.security_rule[*].source_port_range
 }
 
-# ========================================
 # For Expression Output
-# ========================================
 
 # Output all rule descriptions using a for expression
 output "security_rule_descriptions" {

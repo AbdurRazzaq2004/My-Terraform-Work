@@ -1,6 +1,4 @@
-# ========================================
 # Data Source Outputs
-# ========================================
 
 # Shared resource group details (from data source)
 output "shared_rg_name" {
@@ -40,9 +38,7 @@ output "shared_subnet_address_prefix" {
   value       = data.azurerm_subnet.subnet_shared.address_prefix
 }
 
-# ========================================
 # New Resource Outputs
-# ========================================
 
 output "new_rg_name" {
   description = "Name of the newly created resource group"

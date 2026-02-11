@@ -1,6 +1,4 @@
-# ========================================
 # NIC for VNet 1 VMs
-# ========================================
 resource "azurerm_network_interface" "nic1" {
   count               = var.vm_count
   name                = "${var.prefix}-vnet1-nic-${count.index}"
@@ -15,9 +13,7 @@ resource "azurerm_network_interface" "nic1" {
   }
 }
 
-# ========================================
 # VMs in VNet 1
-# ========================================
 resource "azurerm_linux_virtual_machine" "vm1" {
   count               = var.vm_count
   name                = "${var.prefix}-vnet1-vm-${count.index}"
@@ -50,9 +46,7 @@ resource "azurerm_linux_virtual_machine" "vm1" {
   }
 }
 
-# ========================================
 # NIC for VNet 2 VMs
-# ========================================
 resource "azurerm_network_interface" "nic2" {
   count               = var.vm_count
   name                = "${var.prefix}-vnet2-nic-${count.index}"
@@ -67,9 +61,7 @@ resource "azurerm_network_interface" "nic2" {
   }
 }
 
-# ========================================
 # VMs in VNet 2
-# ========================================
 resource "azurerm_linux_virtual_machine" "vm2" {
   count               = var.vm_count
   name                = "${var.prefix}-vnet2-vm-${count.index}"

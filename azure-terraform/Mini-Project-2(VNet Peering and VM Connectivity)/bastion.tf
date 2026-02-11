@@ -1,6 +1,4 @@
-# ========================================
 # Azure Bastion Subnet (must be named AzureBastionSubnet)
-# ========================================
 resource "azurerm_subnet" "bastion_subnet" {
   name                 = "AzureBastionSubnet"
   resource_group_name  = data.azurerm_resource_group.rg.name
@@ -8,9 +6,7 @@ resource "azurerm_subnet" "bastion_subnet" {
   address_prefixes     = [var.bastion_subnet_prefix]
 }
 
-# ========================================
 # Bastion Public IP
-# ========================================
 resource "azurerm_public_ip" "bastion_pip" {
   name                = "${var.prefix}-bastion-pip"
   location            = data.azurerm_resource_group.rg.location
@@ -20,9 +16,7 @@ resource "azurerm_public_ip" "bastion_pip" {
   tags                = local.common_tags
 }
 
-# ========================================
 # Azure Bastion Host
-# ========================================
 resource "azurerm_bastion_host" "bastion" {
   name                = "${var.prefix}-bastion"
   location            = data.azurerm_resource_group.rg.location

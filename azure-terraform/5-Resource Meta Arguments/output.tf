@@ -1,6 +1,4 @@
-# ========================================
 # Outputs
-# ========================================
 
 # Using a for loop to iterate over all storage accounts
 # and return their names as a list

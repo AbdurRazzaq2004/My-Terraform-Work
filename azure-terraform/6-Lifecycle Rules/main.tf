@@ -1,6 +1,4 @@
-# ========================================
 # Resource Group with Lifecycle Rules
-# ========================================
 # Demonstrates: create_before_destroy, prevent_destroy,
 # ignore_changes, and precondition
 
@@ -31,9 +29,7 @@ resource "azurerm_resource_group" "example" {
   }
 }
 
-# ========================================
 # Storage Account with Lifecycle Rules
-# ========================================
 # Demonstrates: create_before_destroy, ignore_changes,
 # replace_triggered_by
 

@@ -1,6 +1,4 @@
-# ========================================
 # Resource Group (Assignment 1 + 2)
-# ========================================
 # Uses formatted name from lower() + replace()
 # Uses merged tags from merge()
 
@@ -10,9 +8,7 @@ resource "azurerm_resource_group" "rg" {
   tags     = local.merge_tags
 }
 
-# ========================================
 # Storage Account (Assignment 3)
-# ========================================
 # Uses formatted name from substr() + lower() + replace()
 
 resource "azurerm_storage_account" "example" {
@@ -24,9 +20,7 @@ resource "azurerm_storage_account" "example" {
   tags                     = local.merge_tags
 }
 
-# ========================================
 # Network Security Group (Assignment 4)
-# ========================================
 # Uses dynamic block with NSG rules created from split() + for expression
 
 resource "azurerm_network_security_group" "example" {

@@ -1,14 +1,10 @@
-# ========================================
 # Resource Group
-# ========================================
 resource "azurerm_resource_group" "example" {
   name     = "${var.environment}-resources"           # String interpolation using var.environment
   location = var.allowed_locations[2]                  # Accessing list element by index (East US)
 }
 
-# ========================================
 # Virtual Network
-# ========================================
 resource "azurerm_virtual_network" "main" {
   name                = "${var.environment}-network"
   address_space       = [element(var.network_config, 0)]   # Tuple element 0: VNET address space
@@ -16,9 +12,7 @@ resource "azurerm_virtual_network" "main" {
   resource_group_name = azurerm_resource_group.example.name
 }
 
-# ========================================
 # Subnet
-# ========================================
 resource "azurerm_subnet" "internal" {
   name                 = "internal"
   resource_group_name  = azurerm_resource_group.example.name
@@ -26,9 +20,7 @@ resource "azurerm_subnet" "internal" {
   address_prefixes     = ["${element(var.network_config, 1)}/${element(var.network_config, 2)}"]  # Tuple elements 1 and 2: subnet address/mask
 }
 
-# ========================================
 # Network Interface
-# ========================================
 resource "azurerm_network_interface" "main" {
   name                = "${var.environment}-nic"
   location            = azurerm_resource_group.example.location
@@ -41,9 +33,7 @@ resource "azurerm_network_interface" "main" {
   }
 }
 
-# ========================================
 # Virtual Machine
-# ========================================
 resource "azurerm_virtual_machine" "main" {
   name                  = "${var.environment}-vm"
   location              = azurerm_resource_group.example.location

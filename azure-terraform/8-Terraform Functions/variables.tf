@@ -1,15 +1,11 @@
-# ========================================
 # Assignment 1: Project Naming Convention
-# ========================================
 variable "project_name" {
   type        = string
   description = "Name of the project (will be formatted to lowercase with hyphens)"
   default     = "Project ALPHA Resource"
 }
 
-# ========================================
 # Assignment 2: Resource Tagging
-# ========================================
 variable "default_tags" {
   type        = map(string)
   description = "Default company tags applied to all resources"
@@ -28,27 +24,21 @@ variable "environment_tags" {
   }
 }
 
-# ========================================
 # Assignment 3: Storage Account Naming
-# ========================================
 variable "storage_account_name" {
   type        = string
   description = "Raw storage account name (will be formatted to meet Azure requirements)"
   default     = "techtutorIALS with!piyushthis should be formatted"
 }
 
-# ========================================
 # Assignment 4: NSG Port Rules
-# ========================================
 variable "allowed_ports" {
   type        = string
   description = "Comma separated list of allowed ports"
   default     = "80,443,3306"
 }
 
-# ========================================
 # Assignment 5: Environment Configuration
-# ========================================
 variable "environment" {
   type        = string
   description = "Environment name (dev, staging, prod)"
@@ -70,9 +60,7 @@ variable "vm_sizes" {
   }
 }
 
-# ========================================
 # Assignment 6: VM Size Validation
-# ========================================
 variable "vm_size" {
   type        = string
   description = "The VM size to use (must contain 'standard' and be 2 to 20 characters)"
@@ -89,9 +77,7 @@ variable "vm_size" {
   }
 }
 
-# ========================================
 # Assignment 7: Backup Configuration
-# ========================================
 variable "backup_name" {
   type        = string
   description = "Backup configuration name (must end with '_backup')"

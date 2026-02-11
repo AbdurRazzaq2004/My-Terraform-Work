@@ -1,6 +1,4 @@
-# ========================================
 # Outputs
-# ========================================
 
 # Output the resource group name
 output "rgname" {

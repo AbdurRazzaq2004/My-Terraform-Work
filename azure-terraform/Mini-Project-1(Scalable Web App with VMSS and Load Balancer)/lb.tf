@@ -1,6 +1,4 @@
-# ========================================
 # Public IP for Load Balancer
-# ========================================
 resource "azurerm_public_ip" "lb_pip" {
   name                = "${var.prefix}-lb-pip"
   location            = data.azurerm_resource_group.rg.location
@@ -12,9 +10,7 @@ resource "azurerm_public_ip" "lb_pip" {
   tags                = local.common_tags
 }
 
-# ========================================
 # Load Balancer
-# ========================================
 resource "azurerm_lb" "lb" {
   name                = "${var.prefix}-lb"
   location            = data.azurerm_resource_group.rg.location
@@ -29,17 +25,13 @@ resource "azurerm_lb" "lb" {
   tags = local.common_tags
 }
 
-# ========================================
 # Backend Address Pool
-# ========================================
 resource "azurerm_lb_backend_address_pool" "bepool" {
   name            = "${var.prefix}-backend-pool"
   loadbalancer_id = azurerm_lb.lb.id
 }
 
-# ========================================
 # Health Probe (checks port 80)
-# ========================================
 resource "azurerm_lb_probe" "http_probe" {
   name            = "http-probe"
   loadbalancer_id = azurerm_lb.lb.id
@@ -48,9 +40,7 @@ resource "azurerm_lb_probe" "http_probe" {
   request_path    = "/"
 }
 
-# ========================================
 # Load Balancer Rule (HTTP: port 80 → 80)
-# ========================================
 resource "azurerm_lb_rule" "http_rule" {
   name                           = "http-rule"
   loadbalancer_id                = azurerm_lb.lb.id
@@ -62,9 +52,7 @@ resource "azurerm_lb_rule" "http_rule" {
   probe_id                       = azurerm_lb_probe.http_probe.id
 }
 
-# ========================================
 # NAT Rule (SSH access to backend VMs)
-# ========================================
 resource "azurerm_lb_nat_rule" "ssh" {
   name                           = "ssh-nat-rule"
   resource_group_name            = data.azurerm_resource_group.rg.name

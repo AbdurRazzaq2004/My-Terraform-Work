@@ -1,14 +1,10 @@
-# ========================================
 # Resource Group
-# ========================================
 output "resource_group_name" {
   description = "Name of the Resource Group"
   value       = data.azurerm_resource_group.rg.name
 }
 
-# ========================================
 # VNet Information
-# ========================================
 output "vnet1_name" {
   description = "Name of VNet 1"
   value       = azurerm_virtual_network.vnet1.name
@@ -29,9 +25,7 @@ output "vnet2_id" {
   value       = azurerm_virtual_network.vnet2.id
 }
 
-# ========================================
 # VM Private IPs
-# ========================================
 output "vnet1_vm_private_ips" {
   description = "Private IP addresses of VMs in VNet 1"
   value       = azurerm_network_interface.nic1[*].private_ip_address
@@ -42,17 +36,13 @@ output "vnet2_vm_private_ips" {
   value       = azurerm_network_interface.nic2[*].private_ip_address
 }
 
-# ========================================
 # Bastion
-# ========================================
 output "bastion_dns_name" {
   description = "DNS name of the Bastion Host"
   value       = azurerm_bastion_host.bastion.dns_name
 }
 
-# ========================================
 # Peering Status
-# ========================================
 output "peering_enabled" {
   description = "Whether VNet peering is enabled"
   value       = var.enable_peering

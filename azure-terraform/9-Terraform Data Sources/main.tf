@@ -1,6 +1,4 @@
-# ========================================
 # DATA SOURCES
-# ========================================
 # Data sources READ existing resources that were
 # created outside of this Terraform configuration.
 # They do NOT create, update, or delete anything.
@@ -23,9 +21,7 @@ data "azurerm_subnet" "subnet_shared" {
   virtual_network_name = data.azurerm_virtual_network.vnet_shared.name
 }
 
-# ========================================
 # RESOURCES (using data from data sources)
-# ========================================
 
 # Create a NEW resource group
 # Uses the LOCATION from the shared resource group (data source)

@@ -1,14 +1,10 @@
-# ========================================
 # Resource Group
-# ========================================
 resource "azurerm_resource_group" "example" {
   name     = "${var.environment}-resources"
   location = var.allowed_locations[2]
 }
 
-# ========================================
 # Storage Account using for_each
-# ========================================
 # Creates multiple storage accounts from a set variable
 # Each storage account gets its own unique name from the set
 
@@ -26,9 +22,7 @@ resource "azurerm_storage_account" "example" {
   }
 }
 
-# ========================================
 # COMMENTED OUT: Storage Account using count
-# ========================================
 # This is the alternative approach using count instead of for_each
 # Uncomment this block and comment the for_each block above to use count
 #

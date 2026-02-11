@@ -1,14 +1,10 @@
-# ========================================
 # Resource Group (pre-existing sandbox RG)
-# ========================================
 variable "resource_group_name" {
   type        = string
   description = "Name of the pre-existing resource group (sandbox lab restriction)"
 }
 
-# ========================================
 # Environment
-# ========================================
 variable "environment" {
   type        = string
   description = "Environment name (dev, staging, prod)"
@@ -20,9 +16,7 @@ variable "environment" {
   }
 }
 
-# ========================================
 # Region
-# ========================================
 variable "location" {
   type        = string
   description = "Azure region where resources will be created"
@@ -34,18 +28,14 @@ variable "location" {
   }
 }
 
-# ========================================
 # Resource Name Prefix
-# ========================================
 variable "prefix" {
   type        = string
   description = "Prefix for all resource names"
   default     = "miniproject1"
 }
 
-# ========================================
 # Network Configuration
-# ========================================
 variable "vnet_address_space" {
   type        = string
   description = "Address space for the Virtual Network"
@@ -64,9 +54,7 @@ variable "mgmt_subnet_prefix" {
   default     = "10.0.16.0/20"
 }
 
-# ========================================
 # Compute Configuration
-# ========================================
 variable "vm_sizes" {
   type        = map(string)
   description = "VM size mapping per environment"
@@ -89,9 +77,7 @@ variable "admin_username" {
   default     = "azureuser"
 }
 
-# ========================================
 # Autoscale Configuration
-# ========================================
 variable "autoscale_min" {
   type        = number
   description = "Minimum number of instances"

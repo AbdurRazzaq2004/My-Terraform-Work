@@ -1,6 +1,4 @@
-# ========================================
 # NAT Gateway Public IP
-# ========================================
 resource "azurerm_public_ip" "natgw_pip" {
   name                = "${var.prefix}-natgw-pip"
   location            = data.azurerm_resource_group.rg.location
@@ -11,9 +9,7 @@ resource "azurerm_public_ip" "natgw_pip" {
   tags                = local.common_tags
 }
 
-# ========================================
 # NAT Gateway (enables outbound internet for VMSS)
-# ========================================
 resource "azurerm_nat_gateway" "natgw" {
   name                    = "${var.prefix}-natgw"
   location                = data.azurerm_resource_group.rg.location
@@ -24,25 +20,19 @@ resource "azurerm_nat_gateway" "natgw" {
   tags                    = local.common_tags
 }
 
-# ========================================
 # NAT Gateway ↔ Public IP Association
-# ========================================
 resource "azurerm_nat_gateway_public_ip_association" "natgw_pip_assoc" {
   public_ip_address_id = azurerm_public_ip.natgw_pip.id
   nat_gateway_id       = azurerm_nat_gateway.natgw.id
 }
 
-# ========================================
 # NAT Gateway ↔ Subnet Association
-# ========================================
 resource "azurerm_subnet_nat_gateway_association" "natgw_subnet_assoc" {
   subnet_id      = azurerm_subnet.app_subnet.id
   nat_gateway_id = azurerm_nat_gateway.natgw.id
 }
 
-# ========================================
 # Virtual Machine Scale Set (VMSS)
-# ========================================
 resource "azurerm_orchestrated_virtual_machine_scale_set" "vmss" {
   name                        = "${var.prefix}-vmss"
   resource_group_name         = data.azurerm_resource_group.rg.name

@@ -1,14 +1,10 @@
-# ========================================
 # Resource Group (pre-existing sandbox RG)
-# ========================================
 variable "resource_group_name" {
   type        = string
   description = "Name of the pre-existing resource group (sandbox lab restriction)"
 }
 
-# ========================================
 # Environment
-# ========================================
 variable "environment" {
   type        = string
   description = "Environment name (dev, staging, prod)"
@@ -20,9 +16,7 @@ variable "environment" {
   }
 }
 
-# ========================================
 # Region
-# ========================================
 variable "location" {
   type        = string
   description = "Azure region where resources will be created"
@@ -34,18 +28,14 @@ variable "location" {
   }
 }
 
-# ========================================
 # Resource Name Prefix
-# ========================================
 variable "prefix" {
   type        = string
   description = "Prefix for all resource names"
   default     = "miniproject2"
 }
 
-# ========================================
 # Network Configuration
-# ========================================
 variable "vnet1_address_space" {
   type        = string
   description = "Address space for VNet 1"
@@ -76,9 +66,7 @@ variable "bastion_subnet_prefix" {
   default     = "10.0.1.0/26"
 }
 
-# ========================================
 # VM Configuration
-# ========================================
 variable "vm_count" {
   type        = number
   description = "Number of VMs to create per VNet"
@@ -97,9 +85,7 @@ variable "admin_username" {
   default     = "azureuser"
 }
 
-# ========================================
 # Enable/Disable Peering
-# ========================================
 variable "enable_peering" {
   type        = bool
   description = "Whether to enable VNet peering between the two VNets"
