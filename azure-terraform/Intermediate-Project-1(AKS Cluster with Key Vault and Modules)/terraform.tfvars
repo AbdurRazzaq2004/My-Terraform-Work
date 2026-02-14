@@ -1,0 +1,10 @@
+rgname                 = "aks-intermediate-rg"
+location               = "East US"
+service_principal_name = "aks-sp"
+keyvault_name          = "aks-kv-razzaq2026"
+aks_cluster_name       = "aks-cluster"
+environment            = "dev"
+ssh_public_key_path    = "~/.ssh/id_rsa.pub"
+vm_size                = "Standard_DS2_v2"
+min_node_count         = 1
+max_node_count         = 3
