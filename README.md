@@ -33,16 +33,16 @@
 
 ```bash
 📦 My-Terraform-Work/
- ┣ 📂 azure-terraform/          # Lessons, Mini Projects, and Intermediate Projects
+ ┣ 📂 aws-terraform/
+ ┃  ┣ 📂 Modules/               # 18 reusable AWS modules
+ ┃  ┗ 📄 README.md
+ ┣ 📂 azure-terraform/
  ┃  ┣ 📂 1 to 9 Lessons/        # Terraform fundamentals with Azure
  ┃  ┣ 📂 Mini-Project-1/        # Scalable Web App with VMSS and Load Balancer
  ┃  ┣ 📂 Mini-Project-2/        # VNet Peering and VM Connectivity
  ┃  ┣ 📂 Mini-Project-3/        # App Service with Deployment Slots
  ┃  ┣ 📂 Intermediate-Project-1/ # AKS Cluster with Key Vault and Modules
- ┃  ┗ 📄 README.md
- ┣ 📂 Modules/                  # Reusable Terraform modules
- ┃  ┣ 📂 AWS/                   # 18 AWS modules
- ┃  ┣ 📂 Azure/                 # 16 Azure modules
+ ┃  ┣ 📂 Modules/               # 16 reusable Azure modules
  ┃  ┗ 📄 README.md
  ┗ 📄 README.md
 ```
@@ -84,7 +84,7 @@ All lessons, mini projects, and intermediate projects live in the [`azure-terraf
 
 A library of **34 production ready** Terraform modules for AWS and Azure. Each module has `main.tf`, `variables.tf`, and `outputs.tf`.
 
-👉 **[View All Modules](./Modules/README.md)**
+👉 **[View AWS Modules](./aws-terraform/Modules/README.md)** &nbsp; | &nbsp; 👉 **[View Azure Modules](./azure-terraform/Modules/README.md)**
 
 ### AWS (18 Modules)
 

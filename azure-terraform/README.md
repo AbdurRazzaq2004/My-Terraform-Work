@@ -74,53 +74,30 @@ This repository documents my **hands on journey** learning Terraform with Micros
 
 ## 📦 Reusable Terraform Modules
 
-A library of **34 production ready** reusable modules for AWS and Azure. Each module follows a consistent structure with `main.tf`, `variables.tf`, and `outputs.tf`.
+A library of **16 production ready** reusable Azure modules. Each module follows a consistent structure with `main.tf`, `variables.tf`, and `outputs.tf`.
 
-👉 **[View All Modules](../Modules/)**
-
-### AWS Modules (18)
-
-| # | Module | Description |
-|:---:|:---|:---|
-| 1 | [vpc](../Modules/AWS/vpc/) | VPC with public/private subnets, IGW, NAT Gateway, route tables |
-| 2 | [ec2](../Modules/AWS/ec2/) | EC2 instance with IMDSv2, encrypted root EBS volume |
-| 3 | [security-group](../Modules/AWS/security-group/) | Security Group with dynamic ingress and egress rules |
-| 4 | [s3](../Modules/AWS/s3/) | S3 bucket with versioning, encryption, lifecycle rules |
-| 5 | [rds](../Modules/AWS/rds/) | RDS instance with subnet group, multi AZ support |
-| 6 | [iam-role](../Modules/AWS/iam-role/) | IAM role with managed and inline policy attachments |
-| 7 | [alb](../Modules/AWS/alb/) | Application Load Balancer with target group and listener |
-| 8 | [eks](../Modules/AWS/eks/) | EKS cluster with managed node group and IAM roles |
-| 9 | [ecs](../Modules/AWS/ecs/) | ECS Fargate cluster with task definition and service |
-| 10 | [lambda](../Modules/AWS/lambda/) | Lambda function with IAM role and CloudWatch logs |
-| 11 | [cloudfront](../Modules/AWS/cloudfront/) | CloudFront distribution with S3 or custom origin |
-| 12 | [route53](../Modules/AWS/route53/) | Route 53 hosted zone with standard and alias records |
-| 13 | [asg](../Modules/AWS/asg/) | Auto Scaling Group with launch template and scaling policy |
-| 14 | [sns](../Modules/AWS/sns/) | SNS topic with email, SQS, and Lambda subscriptions |
-| 15 | [sqs](../Modules/AWS/sqs/) | SQS queue with dead letter queue and redrive policy |
-| 16 | [dynamodb](../Modules/AWS/dynamodb/) | DynamoDB table with GSI, TTL, encryption, PITR |
-| 17 | [secrets-manager](../Modules/AWS/secrets-manager/) | Secrets Manager secret with JSON or plaintext value |
-| 18 | [elasticache](../Modules/AWS/elasticache/) | ElastiCache Redis/Memcached cluster with subnet group |
+👉 **[View All Azure Modules](./Modules/)** &nbsp; | &nbsp; 👉 **[View All AWS Modules](../aws-terraform/Modules/)**
 
 ### Azure Modules (16)
 
 | # | Module | Description |
 |:---:|:---|:---|
-| 1 | [resource-group](../Modules/Azure/resource-group/) | Resource Group |
-| 2 | [vnet](../Modules/Azure/vnet/) | Virtual Network with subnets, delegations, service endpoints |
-| 3 | [nsg](../Modules/Azure/nsg/) | Network Security Group with dynamic rules and subnet associations |
-| 4 | [linux-vm](../Modules/Azure/linux-vm/) | Linux Virtual Machine with NIC and optional public IP |
-| 5 | [storage-account](../Modules/Azure/storage-account/) | Storage Account with blob properties, versioning, containers |
-| 6 | [key-vault](../Modules/Azure/key-vault/) | Key Vault with RBAC authorization and network ACLs |
-| 7 | [aks](../Modules/Azure/aks/) | AKS cluster with autoscaling and system assigned identity |
-| 8 | [app-service](../Modules/Azure/app-service/) | App Service (Linux/Windows) with service plan and staging slot |
-| 9 | [sql-database](../Modules/Azure/sql-database/) | Azure SQL Server and database with firewall rules |
-| 10 | [load-balancer](../Modules/Azure/load-balancer/) | Load Balancer with backend pool, probe, and rules |
-| 11 | [container-registry](../Modules/Azure/container-registry/) | Azure Container Registry |
-| 12 | [bastion](../Modules/Azure/bastion/) | Bastion Host with AzureBastionSubnet and public IP |
-| 13 | [application-gateway](../Modules/Azure/application-gateway/) | Application Gateway with routing rules |
-| 14 | [dns-zone](../Modules/Azure/dns-zone/) | Public or Private DNS Zone with VNet links and records |
-| 15 | [log-analytics](../Modules/Azure/log-analytics/) | Log Analytics Workspace |
-| 16 | [cosmos-db](../Modules/Azure/cosmos-db/) | Cosmos DB account with SQL database and geo replication |
+| 1 | [resource-group](./Modules/resource-group/) | Resource Group |
+| 2 | [vnet](./Modules/vnet/) | Virtual Network with subnets, delegations, service endpoints |
+| 3 | [nsg](./Modules/nsg/) | Network Security Group with dynamic rules and subnet associations |
+| 4 | [linux-vm](./Modules/linux-vm/) | Linux Virtual Machine with NIC and optional public IP |
+| 5 | [storage-account](./Modules/storage-account/) | Storage Account with blob properties, versioning, containers |
+| 6 | [key-vault](./Modules/key-vault/) | Key Vault with RBAC authorization and network ACLs |
+| 7 | [aks](./Modules/aks/) | AKS cluster with autoscaling and system assigned identity |
+| 8 | [app-service](./Modules/app-service/) | App Service (Linux/Windows) with service plan and staging slot |
+| 9 | [sql-database](./Modules/sql-database/) | Azure SQL Server and database with firewall rules |
+| 10 | [load-balancer](./Modules/load-balancer/) | Load Balancer with backend pool, probe, and rules |
+| 11 | [container-registry](./Modules/container-registry/) | Azure Container Registry |
+| 12 | [bastion](./Modules/bastion/) | Bastion Host with AzureBastionSubnet and public IP |
+| 13 | [application-gateway](./Modules/application-gateway/) | Application Gateway with routing rules |
+| 14 | [dns-zone](./Modules/dns-zone/) | Public or Private DNS Zone with VNet links and records |
+| 15 | [log-analytics](./Modules/log-analytics/) | Log Analytics Workspace |
+| 16 | [cosmos-db](./Modules/cosmos-db/) | Cosmos DB account with SQL database and geo replication |
 
 ---
 
@@ -162,6 +139,9 @@ terraform apply
 
 ```bash
 📦 My-Terraform-Work/
+ ┣ 📂 aws-terraform/
+ ┃  ┣ 📂 Modules/ (18 AWS modules)
+ ┃  ┗ 📄 README.md
  ┣ 📂 azure-terraform/
  ┃  ┣ 📂 1-Creating-Resource Group and StorageAccount/
  ┃  ┣ 📂 2-StateFile Management with Azure Storage/
@@ -176,19 +156,7 @@ terraform apply
  ┃  ┣ 📂 Mini-Project-2(VNet Peering and VM Connectivity)/
  ┃  ┣ 📂 Mini-Project-3(App Service with Deployment Slots)/
  ┃  ┣ 📂 Intermediate-Project-1(AKS Cluster with Key Vault and Modules)/
- ┃  ┗ 📄 README.md
- ┣ 📂 Modules/
- ┃  ┣ 📂 AWS/ (18 modules)
- ┃  ┃  ┣ 📂 vpc/   📂 ec2/   📂 security-group/   📂 s3/   📂 rds/
- ┃  ┃  ┣ 📂 iam-role/   📂 alb/   📂 eks/   📂 ecs/   📂 lambda/
- ┃  ┃  ┣ 📂 cloudfront/   📂 route53/   📂 asg/   📂 sns/   📂 sqs/
- ┃  ┃  ┗ 📂 dynamodb/   📂 secrets-manager/   📂 elasticache/
- ┃  ┣ 📂 Azure/ (16 modules)
- ┃  ┃  ┣ 📂 resource-group/   📂 vnet/   📂 nsg/   📂 linux-vm/
- ┃  ┃  ┣ 📂 storage-account/   📂 key-vault/   📂 aks/   📂 app-service/
- ┃  ┃  ┣ 📂 sql-database/   📂 load-balancer/   📂 container-registry/
- ┃  ┃  ┣ 📂 bastion/   📂 application-gateway/   📂 dns-zone/
- ┃  ┃  ┗ 📂 log-analytics/   📂 cosmos-db/
+ ┃  ┣ 📂 Modules/ (16 Azure modules)
  ┃  ┗ 📄 README.md
  ┗ 📄 README.md
 ```
