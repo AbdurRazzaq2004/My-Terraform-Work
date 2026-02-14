@@ -13,13 +13,14 @@
 
 <br/>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=0078D4&center=true&vCenter=true&repeat=true&width=600&height=50&lines=Learning+Terraform+with+Azure+%E2%98%81%EF%B8%8F;9+Lessons+%2B+Mini+Projects+%F0%9F%9A%80;Hands+On+%7C+Real+World+%7C+Production+Ready" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&pause=1000&color=0078D4&center=true&vCenter=true&repeat=true&width=600&height=50&lines=Learning+Terraform+with+Azure+%E2%98%81%EF%B8%8F;9+Lessons+%2B+Mini+Projects+%F0%9F%9A%80;34+Reusable+Modules+for+AWS+%26+Azure+%F0%9F%93%A6;Hands+On+%7C+Real+World+%7C+Production+Ready" alt="Typing SVG" />
 
 <br/>
 
 <img src="https://img.shields.io/badge/Lessons-9-blue?style=flat-square" alt="Lessons"/>
 <img src="https://img.shields.io/badge/Mini_Projects-3-orange?style=flat-square" alt="Projects"/>
 <img src="https://img.shields.io/badge/Intermediate_Projects-1-326CE5?style=flat-square" alt="Intermediate Projects"/>
+<img src="https://img.shields.io/badge/Reusable_Modules-34-2ea44f?style=flat-square" alt="Modules"/>
 <img src="https://img.shields.io/badge/Terraform-%3E%3D1.9.0-purple?style=flat-square&logo=terraform" alt="Terraform"/>
 <img src="https://img.shields.io/badge/AzureRM-~%3E4.8.0-0078D4?style=flat-square&logo=microsoftazure" alt="AzureRM"/>
 
@@ -71,6 +72,58 @@ This repository documents my **hands on journey** learning Terraform with Micros
 
 ---
 
+## 📦 Reusable Terraform Modules
+
+A library of **34 production ready** reusable modules for AWS and Azure. Each module follows a consistent structure with `main.tf`, `variables.tf`, and `outputs.tf`.
+
+👉 **[View All Modules](../Modules/)**
+
+### AWS Modules (18)
+
+| # | Module | Description |
+|:---:|:---|:---|
+| 1 | [vpc](../Modules/AWS/vpc/) | VPC with public/private subnets, IGW, NAT Gateway, route tables |
+| 2 | [ec2](../Modules/AWS/ec2/) | EC2 instance with IMDSv2, encrypted root EBS volume |
+| 3 | [security-group](../Modules/AWS/security-group/) | Security Group with dynamic ingress and egress rules |
+| 4 | [s3](../Modules/AWS/s3/) | S3 bucket with versioning, encryption, lifecycle rules |
+| 5 | [rds](../Modules/AWS/rds/) | RDS instance with subnet group, multi AZ support |
+| 6 | [iam-role](../Modules/AWS/iam-role/) | IAM role with managed and inline policy attachments |
+| 7 | [alb](../Modules/AWS/alb/) | Application Load Balancer with target group and listener |
+| 8 | [eks](../Modules/AWS/eks/) | EKS cluster with managed node group and IAM roles |
+| 9 | [ecs](../Modules/AWS/ecs/) | ECS Fargate cluster with task definition and service |
+| 10 | [lambda](../Modules/AWS/lambda/) | Lambda function with IAM role and CloudWatch logs |
+| 11 | [cloudfront](../Modules/AWS/cloudfront/) | CloudFront distribution with S3 or custom origin |
+| 12 | [route53](../Modules/AWS/route53/) | Route 53 hosted zone with standard and alias records |
+| 13 | [asg](../Modules/AWS/asg/) | Auto Scaling Group with launch template and scaling policy |
+| 14 | [sns](../Modules/AWS/sns/) | SNS topic with email, SQS, and Lambda subscriptions |
+| 15 | [sqs](../Modules/AWS/sqs/) | SQS queue with dead letter queue and redrive policy |
+| 16 | [dynamodb](../Modules/AWS/dynamodb/) | DynamoDB table with GSI, TTL, encryption, PITR |
+| 17 | [secrets-manager](../Modules/AWS/secrets-manager/) | Secrets Manager secret with JSON or plaintext value |
+| 18 | [elasticache](../Modules/AWS/elasticache/) | ElastiCache Redis/Memcached cluster with subnet group |
+
+### Azure Modules (16)
+
+| # | Module | Description |
+|:---:|:---|:---|
+| 1 | [resource-group](../Modules/Azure/resource-group/) | Resource Group |
+| 2 | [vnet](../Modules/Azure/vnet/) | Virtual Network with subnets, delegations, service endpoints |
+| 3 | [nsg](../Modules/Azure/nsg/) | Network Security Group with dynamic rules and subnet associations |
+| 4 | [linux-vm](../Modules/Azure/linux-vm/) | Linux Virtual Machine with NIC and optional public IP |
+| 5 | [storage-account](../Modules/Azure/storage-account/) | Storage Account with blob properties, versioning, containers |
+| 6 | [key-vault](../Modules/Azure/key-vault/) | Key Vault with RBAC authorization and network ACLs |
+| 7 | [aks](../Modules/Azure/aks/) | AKS cluster with autoscaling and system assigned identity |
+| 8 | [app-service](../Modules/Azure/app-service/) | App Service (Linux/Windows) with service plan and staging slot |
+| 9 | [sql-database](../Modules/Azure/sql-database/) | Azure SQL Server and database with firewall rules |
+| 10 | [load-balancer](../Modules/Azure/load-balancer/) | Load Balancer with backend pool, probe, and rules |
+| 11 | [container-registry](../Modules/Azure/container-registry/) | Azure Container Registry |
+| 12 | [bastion](../Modules/Azure/bastion/) | Bastion Host with AzureBastionSubnet and public IP |
+| 13 | [application-gateway](../Modules/Azure/application-gateway/) | Application Gateway with routing rules |
+| 14 | [dns-zone](../Modules/Azure/dns-zone/) | Public or Private DNS Zone with VNet links and records |
+| 15 | [log-analytics](../Modules/Azure/log-analytics/) | Log Analytics Workspace |
+| 16 | [cosmos-db](../Modules/Azure/cosmos-db/) | Cosmos DB account with SQL database and geo replication |
+
+---
+
 ##  Tech Stack
 
 <div align="center">
@@ -108,20 +161,35 @@ terraform apply
 ## 📁 Repository Structure
 
 ```bash
-📦 azure-terraform/
- ┣ 📂 1-Creating-Resource Group and StorageAccount/
- ┣ 📂 2-StateFile Management with Azure Storage/
- ┣ 📂 3-Modular Terraform File Structure/
- ┣ 📂 4-Variable Type Constraints/
- ┣ 📂 5-Resource Meta Arguments/
- ┣ 📂 6-Lifecycle Rules/
- ┣ 📂 7-Terraform Expressions/
- ┣ 📂 8-Terraform Functions/
- ┣ 📂 9-Terraform Data Sources/
- ┣ 📂 Mini-Project-1(Scalable Web App with VMSS and Load Balancer)/
- ┣ 📂 Mini-Project-2(VNet Peering and VM Connectivity)/
- ┣ 📂 Mini-Project-3(App Service with Deployment Slots)/
- ┣ 📂 Intermediate-Project-1(AKS Cluster with Key Vault and Modules)/
+📦 My-Terraform-Work/
+ ┣ 📂 azure-terraform/
+ ┃  ┣ 📂 1-Creating-Resource Group and StorageAccount/
+ ┃  ┣ 📂 2-StateFile Management with Azure Storage/
+ ┃  ┣ 📂 3-Modular Terraform File Structure/
+ ┃  ┣ 📂 4-Variable Type Constraints/
+ ┃  ┣ 📂 5-Resource Meta Arguments/
+ ┃  ┣ 📂 6-Lifecycle Rules/
+ ┃  ┣ 📂 7-Terraform Expressions/
+ ┃  ┣ 📂 8-Terraform Functions/
+ ┃  ┣ 📂 9-Terraform Data Sources/
+ ┃  ┣ 📂 Mini-Project-1(Scalable Web App with VMSS and Load Balancer)/
+ ┃  ┣ 📂 Mini-Project-2(VNet Peering and VM Connectivity)/
+ ┃  ┣ 📂 Mini-Project-3(App Service with Deployment Slots)/
+ ┃  ┣ 📂 Intermediate-Project-1(AKS Cluster with Key Vault and Modules)/
+ ┃  ┗ 📄 README.md
+ ┣ 📂 Modules/
+ ┃  ┣ 📂 AWS/ (18 modules)
+ ┃  ┃  ┣ 📂 vpc/   📂 ec2/   📂 security-group/   📂 s3/   📂 rds/
+ ┃  ┃  ┣ 📂 iam-role/   📂 alb/   📂 eks/   📂 ecs/   📂 lambda/
+ ┃  ┃  ┣ 📂 cloudfront/   📂 route53/   📂 asg/   📂 sns/   📂 sqs/
+ ┃  ┃  ┗ 📂 dynamodb/   📂 secrets-manager/   📂 elasticache/
+ ┃  ┣ 📂 Azure/ (16 modules)
+ ┃  ┃  ┣ 📂 resource-group/   📂 vnet/   📂 nsg/   📂 linux-vm/
+ ┃  ┃  ┣ 📂 storage-account/   📂 key-vault/   📂 aks/   📂 app-service/
+ ┃  ┃  ┣ 📂 sql-database/   📂 load-balancer/   📂 container-registry/
+ ┃  ┃  ┣ 📂 bastion/   📂 application-gateway/   📂 dns-zone/
+ ┃  ┃  ┗ 📂 log-analytics/   📂 cosmos-db/
+ ┃  ┗ 📄 README.md
  ┗ 📄 README.md
 ```
 
@@ -133,7 +201,9 @@ terraform apply
 |:---|:---|
 | Terraform Documentation | [developer.hashicorp.com/terraform](https://developer.hashicorp.com/terraform/docs) |
 | AzureRM Provider | [registry.terraform.io/providers/hashicorp/azurerm](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs) |
+| AWS Provider | [registry.terraform.io/providers/hashicorp/aws](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) |
 | Azure Documentation | [learn.microsoft.com/azure](https://learn.microsoft.com/en-us/azure/) |
+| AWS Documentation | [docs.aws.amazon.com](https://docs.aws.amazon.com/) |
 | Terraform Best Practices | [developer.hashicorp.com/terraform/cloud-docs/recommended-practices](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices) |
 
 ---
